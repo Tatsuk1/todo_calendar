@@ -23,10 +23,13 @@
     <%= f.password_field :password_confirmation, class:"form-control" %>
   </div>
 
-  <div class="checkbox">
-    <%= f.label :admin, "管理者権限" %>
-    <%= f.check_box :admin, class: "checkbox" %>
+  <% if logged_in? && current_user.admin == true %>
+    <div class="checkbox, admin">
+      <%= f.label :admin, "管理者権限" %>
+      <%= f.check_box :admin, class: "checkbox" %>
+    </div>
+  <% end %>
+  <div class = "form-create-button">
+    <%= f.submit "登録" , class: 'btn btn-raised btn-primary'%>
   </div>
-
-  <%= f.submit "登録" , class: 'btn btn-raised btn-primary'%>
 <% end %>

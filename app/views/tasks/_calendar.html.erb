@@ -1,0 +1,20 @@
+<div class = 'todocalendar'>
+  <%= month_calendar events: tasks do |date, tasks| %>
+    <%= date %>
+
+    <% tasks.each do |task| %>
+      <div class = 'flex' >
+        <%= task.start_time.hour %>:<%= task.start_time.min %> ~
+        <%= link_to task do %>
+          <% if task.alone == true %>
+            <div class = "alone-todo">
+              <%= task.name %>
+            </div>
+          <% else %>
+            <%= task.name %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

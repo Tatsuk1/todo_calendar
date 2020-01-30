@@ -1,10 +1,12 @@
 <% if task.errors.present? %>
-  <ul id="error_explanetion">
-    <% task.errors.full_messages.each do |message| %>
-      <li><%= message%></li>
-    <% end %>
-  </ul>
-  <% end %>
+  <div class= "error-messages">
+    <ul id="error_explanetion">
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message%></li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>
 
 
 <%= form_with model: task, local: true do |f| %>
@@ -18,10 +20,19 @@
     <%= f.text_area :description, row: 5, class:"form-control", id: 'task_description' %>
   </div>
 
-  <div class="checkbox">
-    <%= f.label '一人でする' %>
-    <%= f.check_box :alone, class: "checkbox" %>
+  <div class = "flex">
+    <div class="form-group">
+      <%= f.label "開始" %>
+      <%= f.datetime_select :start_time, :start_year => Time.now.year, :end_year => Time.now.year + 2, :minute_step => 10, :use_month_numbers => true, date_separator: '/ ' %>
+    </div>
+
+    <div class="checkbox, alone">
+      <%= f.label '一人でする' %>
+      <%= f.check_box :alone, class: "checkbox" %>
+    </div>
   </div>
 
-  <%= f.submit "作成" , class: 'btn btn-raised btn-primary'%>
+  <div class = "form-create-button">
+    <%= f.submit "作成" , class: 'btn btn-raised btn-primary'%>
+  </div>
 <% end %>

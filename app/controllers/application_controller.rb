@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
+  helper_method :logged_in?
 
   private
 
@@ -10,4 +11,8 @@ class ApplicationController < ActionController::Base
     def login_required
       redirect_to login_path unless current_user
     end
+
+    def set_time_zone 
+      Time .zone = current_user.time_zone
+    end 
 end
