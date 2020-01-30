@@ -1,5 +1,8 @@
 <h1>ユーザー登録</h1>
-<%= link_to 'トップに戻る', root_path, class:"btn btn-outline-primary" %>
+
+<div class = "back-button">
+  <%= link_to '一覧に戻る', users_path, class:"btn btn-outline-primary" %>
+</div>
 
 <%= render 'users/form', user:@user %>
 

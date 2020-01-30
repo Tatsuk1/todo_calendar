@@ -1,37 +1,32 @@
   <h1>タスク一覧</h1>
   
-  <span>体力:</span>
-  <%= current_user.hp %>
-  <% @no_hp.times do %>
-    <span class='no_hp'>.</span>
-  <% end %>
-  <% @hp.times do %>
-    <span class='my_hp'>.</span>
-  <% end %>
-
-  <%= link_to '作成', new_task_path, class: "btn btn-outline-primary" %>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">タイトル</th>
-        <th scope="col">詳細</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tasks.each do |task| %>
-        <tr>
-          <td scope="row"><%= task.name %></td>
-          <td scope="row"><%= task.description %></td>
-          <td><%= link_to '詳細', task, class: "btn btn-raised btn-success btn-indigo800_flt" %></td>
-          <td><%= link_to '編集', edit_task_path(task), class: "btn btn-raised btn-primary" %></td>
-          <td><%= link_to '削除', task, class: "btn btn-raised btn-danger", method: :delete, data: { confirm: '削除しますか?' } %></td>
-        </tr>
+  <div class = "flex">
+    <span>体力:</span>
+    <%= current_user.hp %>
+    <div class = "status-bar">
+      <% @no_hp.times do %>
+        <span class='no_hp'>.</span>
       <% end %>
-    </tbody>
-  </table>
+      <% @hp.times do %>
+        <span class='my_hp'>.</span>
+      <% end %>
+    </div>
+
+    <div class= 'comment'>
+      <%if current_user.hp > 50 %>
+        <span>元気です、良い1日を</span>
+      <% elsif current_user.hp <= 50 && current_user.hp > 25 %>
+        <span>お疲れ様です、そろそろ休んではどうでしょう</span>
+      <% else %>
+        <span>頑張りすぎています、休みましょう</span>
+      <% end %>
+    </div>
+    
+    <div class="top-button">
+      <%= link_to '作成', new_task_path, class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+  <%= render 'tasks/calendar', tasks:@tasks %>
 
 
 

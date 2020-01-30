@@ -1,4 +1,10 @@
-<h1>ログイン</h1>
+<div class = "top-comment">
+  <h1>内向型向けのTodoリストです</h1>
+  <h3>
+  ユーザーは体力を持っていて、予定を入れると消費します<br>
+  しかし、ある予定を入れると回復します
+  </h3>
+</div>
 
 <%= form_with scope: :session, local: true do |f| %>
   <div class="form-group">
@@ -14,3 +20,7 @@
   <%= f.submit "ログイン" , class: 'btn btn-raised btn-primary'%>
 <% end %>
 
+<div class = "show-edit-button">
+  <%= link_to '新規登録', new_user_path, class: "btn btn-raised btn-success" %>
+  <span> 新規登録の方はこちら</span>
+</div>
