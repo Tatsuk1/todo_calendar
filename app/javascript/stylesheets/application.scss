@@ -1,0 +1,25 @@
+@import '~bootstrap-material-design/scss/bootstrap-material-design';
+
+.flex{
+  width:100px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.my_hp {
+  color: #00FF66;
+  width:100%;
+  background : linear-gradient(to right,
+  green,
+  aqua);
+}
+
+.no_hp{
+  color:gray;
+  width:100%;
+  background: gray;
+  opacity: 0.4;
+}

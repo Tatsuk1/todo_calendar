@@ -1,0 +1,22 @@
+<h1>ユーザー詳細</h1>
+<%= link_to '一覧に戻る', users_path, class:"btn btn-outline-primary" %>
+<%= link_to '編集', edit_task_path(@user), class: "btn btn-raised btn-primary" %>
+<%= link_to '削除', @user, class: "btn btn-raised btn-danger", method: :delete, data: { confirm: '削除しますか?' } %>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">名前</th>
+      <th scope="col">HP</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td scope="row"><%= @user.name %></td>
+      <td scope="row"><%= @user.hp %></td>
+    </tr>
+  </tbody>
+</table>
